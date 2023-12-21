@@ -4,64 +4,29 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#2E6183"
     tools:context=".MainActivity"
     tools:ignore="Orientation">
 
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/my_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#ff6750a4"
+        app:titleTextColor="#fff"
+        android:elevation="4dp"
+        android:paddingVertical="10dp"
+        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
+
+    </androidx.appcompat.widget.Toolbar>
+
     <LinearLayout
+        android:layout_below="@id/my_toolbar"
+        android:id="@+id/movie_content"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="16dp"
         tools:ignore="MissingConstraints,RedundantNamespace">
-
-
-        <ImageView
-            android:id="@+id/moviePosterImageView"
-            android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:scaleType="centerCrop"
-            android:src="@drawable/ic_image_24"
-            tools:ignore="ContentDescription" />
-
-        <TextView
-            android:id="@+id/movieTitleTextView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:textSize="16sp"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/movieOverviewTextView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp" />
-    </LinearLayout>
-
-    <TextView
-        android:layout_width="181dp"
-        android:layout_height="34dp"
-        android:layout_above="@id/Nama"
-        android:layout_marginBottom="-50dp"
-        android:text="Hallo' Selamat datang"
-        android:textColor="@color/black"
-        android:textStyle="bold"
-        tools:ignore="TextSizeCheck" />
-
-    <TextView
-        android:id="@+id/Nama"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginLeft="6dp"
-        android:layout_marginTop="60dp"
-        android:text="...."
-        android:textColor="@color/black"
-        android:textSize="20dp"
-        android:textStyle="bold"
-        tools:ignore="TextSizeCheck" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/movieRecyclerView"
@@ -70,19 +35,7 @@
         android:padding="8dp"
         android:clipToPadding="false"
         android:clipChildren="false"
-        android:background="#CDCDCD"
         android:scrollbars="vertical" />
-
-    <Button
-        android:id="@+id/btnLogout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginLeft="1dp"
-        android:layout_marginTop="683dp"
-        android:backgroundTint="#F82323"
-        android:text="Logout" />
-
+    </LinearLayout>
 
 </RelativeLayout>
