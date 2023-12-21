@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "466534187261",
+    "project_id": "jafilm1-f8e8a",
+    "storage_bucket": "jafilm1-f8e8a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:466534187261:android:00270bbeb7974f4b46be94",
+        "android_client_info": {
+          "package_name": "com.example.jafilm1"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBNEdzrSH34F3CLlhSZeAMmIG741KLD4qc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
