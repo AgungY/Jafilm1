@@ -15,6 +15,9 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> 
     private final List<Movie> movies;
     private final Context context;
 
+
+    private OnItemClickListener listener;
+
     public MovieAdapter(List<Movie> movies, Context context) {
         this.movies = movies;
         this.context = context;
@@ -31,7 +34,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> 
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Movie movie = movies.get(position);
         holder.titleTextView.setText(movie.original_title);
-        holder.overviewTextView.setText(movie.overview);
+        holder.bind(movie, listener);
 
         Glide.with(context)
                 .load("https://image.tmdb.org/t/p/w500" + movie.poster_path)
@@ -43,16 +46,53 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> 
         return movies.size();
     }
 
+    public void setOnItemClickListener(MovieListFragment movieListFragment) {
+    }
+
     static class ViewHolder extends RecyclerView.ViewHolder {
         ImageView posterImageView;
         TextView titleTextView;
-        TextView overviewTextView;
 
         ViewHolder(@NonNull View itemView) {
             super(itemView);
             posterImageView = itemView.findViewById(R.id.moviePosterImageView);
             titleTextView = itemView.findViewById(R.id.movieTitleTextView);
-            overviewTextView = itemView.findViewById(R.id.movieOverviewTextView);
+
+            posterImageView.setScaleType(ImageView.ScaleType.FIT_XY);
+
+        }
+
+        public void bind(final Movie movie, final OnItemClickListener listener) {
+            // Bind data to views
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    listener.onItemClick(movie);
+                }
+            });
         }
     }
+
+    public interface OnItemClickListener {
+        void onItemClick(Movie movie);
+
+    }
+
+
+//    @Override
+//    public void onItemClick(Movie movie) {
+//
+//        Bundle bundle = new Bundle();
+//        bundle.putParcelable("movie", movie);
+//
+//
+//        MovieDetailFragment detailFragment = new MovieDetailFragment();
+//        detailFragment.setArguments(bundle);
+//
+//        getParentFragmentManager().beginTransaction()
+//                .replace(R.id.fragment_container, detailFragment)
+//                .addToBackStack(null)
+//                .commit();
+//    }
 }
+

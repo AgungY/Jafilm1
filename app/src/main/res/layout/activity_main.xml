@@ -23,19 +23,21 @@
     <LinearLayout
         android:layout_below="@id/my_toolbar"
         android:id="@+id/movie_content"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_height="200dp"
         android:orientation="vertical"
+        android:scaleType="fitCenter"
+        android:layout_centerInParent="true"
         tools:ignore="MissingConstraints,RedundantNamespace">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/movieRecyclerView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="8dp"
-        android:clipToPadding="false"
-        android:clipChildren="false"
-        android:scrollbars="vertical" />
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/movieRecyclerView"
+            android:layout_width="400dp"
+            android:layout_height="300dp"
+            android:clipChildren="false"
+            android:clipToPadding="false"
+            android:padding="8dp"
+            android:scrollbars="vertical" />
     </LinearLayout>
 
 </RelativeLayout>

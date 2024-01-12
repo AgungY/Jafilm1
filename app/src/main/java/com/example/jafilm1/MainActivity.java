@@ -59,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
                 list = res.results;
 
                 MovieAdapter adapter = new MovieAdapter(list, getApplicationContext());
-                LinearLayoutManager layout = new LinearLayoutManager(getApplicationContext(), RecyclerView.VERTICAL, false);
+                LinearLayoutManager layout = new LinearLayoutManager(getApplicationContext(), RecyclerView.HORIZONTAL, false);
 
                 RecyclerView recycle = findViewById(R.id.movieRecyclerView);
                 recycle.setLayoutManager(layout);
