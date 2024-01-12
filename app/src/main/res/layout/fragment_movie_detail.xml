@@ -8,18 +8,19 @@ android:padding="16dp">
 
 <ImageView
     android:id="@+id/imageViewDetailPoster"
-    android:layout_width="120dp"
-    android:layout_height="180dp"
-    android:scaleType="centerCrop"
+    android:layout_width="match_parent"
+    android:layout_height="190dp"
+    android:scaleType="fitXY"
     android:layout_centerHorizontal="true"
     android:src="@drawable/baseline_image_24" />
 
 <TextView
     android:id="@+id/textViewDetailTitle"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="30dp"
     android:layout_below="@id/imageViewDetailPoster"
-    android:layout_marginTop="16dp"
+    android:layout_marginTop="20dp"
+    android:fontFamily="sans-serif-black"
     android:textSize="20sp"
     android:textStyle="bold"
     android:textAlignment="center" />
@@ -29,27 +30,54 @@ android:padding="16dp">
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_below="@id/textViewDetailTitle"
-    android:layout_marginTop="8dp" />
+    android:layout_marginTop="20dp" />
 
-<TextView
-    android:id="@+id/textViewDetailRating"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_below="@id/textViewDetailDescription"
-    android:layout_marginTop="8dp" />
+    <ImageView
+        android:id="@+id/ranting"
+        android:layout_width="28dp"
+        android:layout_height="30dp"
+        android:src="@drawable/baseline_star_24"
+        android:layout_below="@+id/textViewDetailDescription"
+        android:layout_marginTop="10dp" />
 
-<TextView
-    android:id="@+id/textViewDetailReleaseDate"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_below="@id/textViewDetailRating"
-    android:layout_marginTop="8dp" />
+    <TextView
+        android:id="@+id/textViewDetailRating"
+        android:layout_width="217dp"
+        android:layout_height="30dp"
+        android:layout_below="@id/textViewDetailDescription"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="10dp" />
 
-<TextView
-    android:id="@+id/textViewDetailPopularity"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_below="@id/textViewDetailReleaseDate"
-    android:layout_marginTop="8dp" />
+    <ImageView
+        android:id="@+id/rilis"
+        android:layout_width="28dp"
+        android:layout_height="30dp"
+        android:layout_below="@+id/ranting"
+        android:layout_marginTop="10dp"
+        android:src="@drawable/baseline_date_range_24" />
+
+    <TextView
+        android:id="@+id/textViewDetailReleaseDate"
+        android:layout_width="217dp"
+        android:layout_height="30dp"
+        android:layout_below="@id/textViewDetailRating"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="10dp" />
+
+    <ImageView
+        android:id="@+id/popularitas"
+        android:layout_width="28dp"
+        android:layout_height="30dp"
+        android:layout_below="@+id/rilis"
+        android:layout_marginTop="10dp"
+        android:src="@drawable/baseline_people_24" />
+
+    <TextView
+        android:id="@+id/textViewDetailPopularity"
+        android:layout_width="217dp"
+        android:layout_height="30dp"
+        android:layout_below="@id/textViewDetailReleaseDate"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="10dp" />
 
 </RelativeLayout>

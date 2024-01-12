@@ -99,6 +99,7 @@ public class MainActivity extends AppCompatActivity implements MovieAdapter.OnIt
 
     @Override
     public void onItemClick(Movie movie) {
+        startActivity(new Intent(getApplicationContext(), MovieDetailFragment.class));
         MovieDetailFragment detailFragment = new MovieDetailFragment(
                 movie.poster_path, movie.original_title, movie.overview, movie.vote_average+"",
                 movie.release_date, movie.popularity+"");
