@@ -1,6 +1,7 @@
 package com.example.jafilm1;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,13 +15,12 @@ import java.util.List;
 public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> {
     private final List<Movie> movies;
     private final Context context;
-
-
     private OnItemClickListener listener;
 
-    public MovieAdapter(List<Movie> movies, Context context) {
+    public MovieAdapter(List<Movie> movies, Context context, OnItemClickListener onItemClickListener) {
         this.movies = movies;
         this.context = context;
+        this.listener = onItemClickListener;
     }
 
     @NonNull
@@ -34,7 +34,13 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> 
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Movie movie = movies.get(position);
         holder.titleTextView.setText(movie.original_title);
-        holder.bind(movie, listener);
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                listener.onItemClick(movie);
+            }
+        });
 
         Glide.with(context)
                 .load("https://image.tmdb.org/t/p/w500" + movie.poster_path)
@@ -44,9 +50,6 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> 
     @Override
     public int getItemCount() {
         return movies.size();
-    }
-
-    public void setOnItemClickListener(MovieListFragment movieListFragment) {
     }
 
     static class ViewHolder extends RecyclerView.ViewHolder {
@@ -60,16 +63,6 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> 
 
             posterImageView.setScaleType(ImageView.ScaleType.FIT_XY);
 
-        }
-
-        public void bind(final Movie movie, final OnItemClickListener listener) {
-            // Bind data to views
-            itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    listener.onItemClick(movie);
-                }
-            });
         }
     }
 

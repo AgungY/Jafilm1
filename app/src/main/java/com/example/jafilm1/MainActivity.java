@@ -25,7 +25,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements MovieAdapter.OnItemClickListener {
     private FirebaseUser firebaseUser;
     private List<Movie> list = new ArrayList<>();
 
@@ -58,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
                 MovieResponse res = response.body();
                 list = res.results;
 
-                MovieAdapter adapter = new MovieAdapter(list, getApplicationContext());
+                MovieAdapter adapter = new MovieAdapter(list, getApplicationContext(), MainActivity.this);
                 LinearLayoutManager layout = new LinearLayoutManager(getApplicationContext(), RecyclerView.HORIZONTAL, false);
 
                 RecyclerView recycle = findViewById(R.id.movieRecyclerView);
@@ -95,5 +95,17 @@ public class MainActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onItemClick(Movie movie) {
+        MovieDetailFragment detailFragment = new MovieDetailFragment(
+                movie.poster_path, movie.original_title, movie.overview, movie.vote_average+"",
+                movie.release_date, movie.popularity+"");
+
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.movie_content, detailFragment)
+                .addToBackStack(null)
+                .commit();
     }
 }
